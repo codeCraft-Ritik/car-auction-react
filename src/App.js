@@ -13,21 +13,19 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 // react-router components
-import {Navigate, Route, Routes, useLocation} from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 // @mui material components
-import {ThemeProvider} from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 // Material Kit 2 PRO React themes
 import theme from "assets/theme";
 import routes from "routes";
 import Presentation from "./layouts/pages/landing-pages/rental";
-
-// Material Kit 2 PRO React routes
 
 export default function App() {
   const { pathname } = useLocation();
@@ -38,6 +36,7 @@ export default function App() {
     document.scrollingElement.scrollTop = 0;
   }, [pathname]);
 
+  // Function to map through the routes array and generate Route components
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
       if (route.collapse) {
@@ -57,6 +56,7 @@ export default function App() {
       <Routes>
         {getRoutes(routes)}
         <Route path="/" element={<Presentation />} />
+        {/* Redirect any unknown path to the home page */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </ThemeProvider>

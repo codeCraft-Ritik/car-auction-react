@@ -54,8 +54,8 @@ const routes = [
         collapse: [
           {
             name: "rental",
-            route: "/pages/landing-pages/rental",
-            component: <Rental />,
+            route: "/pages/landing-pages/rental", // The URL users visit
+            component: <Rental />, // The component displayed
           },
         ],
       },

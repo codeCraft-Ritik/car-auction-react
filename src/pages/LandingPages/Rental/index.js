@@ -1,4 +1,4 @@
-/*
+/**
 =========================================================
 * Material Kit 2 PRO React - v2.0.0
 =========================================================
@@ -20,38 +20,41 @@ import Card from "@mui/material/Card";
 
 // Material Kit 2 PRO React components
 import MKBox from "components/MKBox";
+import MKTypography from "components/MKTypography";
+import MKButton from "components/MKButton";
 
 // Material Kit 2 PRO React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Rental page sections
+import Search from "pages/LandingPages/Rental/sections/Search";
+import AuctionListings from "pages/LandingPages/Rental/sections/AuctionListings"; // Newly Added Section
 import Places from "pages/LandingPages/Rental/sections/Places";
 import Testimonials from "pages/LandingPages/Rental/sections/Testimonials";
 import Faq from "pages/LandingPages/Rental/sections/Faq";
+import Contact from "pages/LandingPages/Rental/sections/Contact";
 
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Images
-import bgImage from "assets/images/motors.stylemixthemes.com/slider2.jpg";
+import bgImage from "assets/images/bg-rental.jpeg";
 
 function Rental() {
-  const brand = <span style={{ fontSize: "2.5rem", color: "#9595f7" }}>iAuto</span>;
   return (
     <>
       <DefaultNavbar
         routes={routes}
         action={{
-          type: "internal",
-          route: "/",
-          label: "sign in",
+          type: "external",
+          route: "https://www.creative-tim.com/product/material-kit-pro-react",
+          label: "buy now",
           color: "info",
         }}
         transparent
         light
-        brand={brand}
       />
       <MKBox
         minHeight="50vh"
@@ -76,7 +79,22 @@ function Rental() {
             lg={8}
             justifyContent="center"
             sx={{ mx: "auto", textAlign: "center" }}
-          />
+          >
+            <MKTypography
+              variant="h1"
+              color="white"
+              sx={({ breakpoints, typography: { size } }) => ({
+                [breakpoints.down("md")]: {
+                  fontSize: size["3xl"],
+                },
+              })}
+            >
+              Find your next adventure
+            </MKTypography>
+            <MKTypography variant="body1" color="white" mt={1}>
+              The luxury of being yourself. We offer the best car auction services in the world.
+            </MKTypography>
+          </Grid>
         </Container>
       </MKBox>
       <Card
@@ -88,12 +106,14 @@ function Rental() {
           backgroundColor: ({ palette: { white }, functions: { rgba } }) => rgba(white.main, 0.8),
           backdropFilter: "saturate(200%) blur(30px)",
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
-          overflow: "hidden",
         }}
       >
+        <Search />
+        <AuctionListings /> {/* Integrated Auction Listings Section */}
         <Places />
         <Testimonials />
         <Faq />
+        <Contact />
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
